@@ -1,0 +1,24 @@
+{
+  "name": "vite-react-to-webcomponent",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "node ./scripts/build.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-to-webcomponent": "^2.0.0-alpha.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^9.0.1",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}
