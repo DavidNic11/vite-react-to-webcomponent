@@ -7,8 +7,8 @@ const typescript = require("@rollup/plugin-typescript");
 const reactComponentLibrary = {
   plugins: [typescript()],
   entry: path.resolve(__dirname, "../src/index.ts"),
-  fileName: (format) => `react-component-library.${format}.js`,
-  name: "react-component-library",
+  fileName: (format) => `index.${format}.js`,
+  name: "index",
 };
 
 const webcomponentsLibrary = {
