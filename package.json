@@ -2,6 +2,25 @@
   "name": "vite-react-to-webcomponent",
   "private": true,
   "version": "0.0.0",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.umd.js"
+    },
+    "./webcomponents": {
+      "import": "./dist/webcomponent.es.js",
+      "require": "./dist/webcomponent.umd.js"
+    }
+  },
+  "main": "./dist/index.umd.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist",
+    "./src",
+    "!src/**/*.test.ts",
+    "!src/**/*.stories.ts"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "node ./scripts/build.js",
