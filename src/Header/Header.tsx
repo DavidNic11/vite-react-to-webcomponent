@@ -1,10 +1,10 @@
 import styles from "./Header.module.css";
 
 export interface HeaderProps {
-  title?: string;
+  text?: string;
 }
 
-export const Header = ({ title }: HeaderProps) => (
+export const Header = ({ text }: HeaderProps) => (
   <header>
     <div className={styles.wrapper}>
       <div>
@@ -13,7 +13,7 @@ export const Header = ({ title }: HeaderProps) => (
           src="https://new.bitovi.com/logos/bitovi-logo-red-1.svg"
         />
       </div>
-      <h1 className={styles.logo}>{title}</h1>
+      <h1 className={styles.logo}>{text}</h1>
     </div>
   </header>
 );

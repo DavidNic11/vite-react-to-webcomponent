@@ -8,6 +8,6 @@ customElements.define(
   "rwc-header",
   // @ts-ignore
   reactToWebComponent(Header, React, ReactDOMClient, {
-    props: ["title"],
+    props: ["text"],
   })
 );

@@ -10,12 +10,12 @@ export default {
 
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
-export const Without_Title = Template.bind({});
-Without_Title.args = {
-  title: "",
+export const Without_Text = Template.bind({});
+Without_Text.args = {
+  text: "",
 };
 
-export const With_Title = Template.bind({});
-With_Title.args = {
-  title: "Hello World",
+export const With_Text = Template.bind({});
+With_Text.args = {
+  text: "Hello World",
 };
