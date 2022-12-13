@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "prepare": "npm i && npm run build",
+    "prepare": "npm run build",
     "build": "node ./scripts/build.js",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
