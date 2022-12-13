@@ -1,11 +1,17 @@
-const path = require("path");
+import path from "path";
+import { fileURLToPath } from "url";
 
-const { build } = require("vite");
-const react = require("@vitejs/plugin-react");
-const typescript = require("@rollup/plugin-typescript");
+import { build, defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import typescript from "@rollup/plugin-typescript";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+process.env.NODE_ENV = "production";
 
 const reactComponentLibrary = {
-  plugins: [typescript()],
+  plugins: [],
   entry: path.resolve(__dirname, "../src/index.ts"),
   fileName: (format) => `index.${format}.js`,
   name: "index",
@@ -19,8 +25,8 @@ const webcomponentsLibrary = {
 };
 
 const getSharedConfiguration = ({ plugins, ...library }) => {
-  return {
-    plugins: [react(), ...plugins],
+  return defineConfig(() => ({
+    plugins: [react(), typescript(), cssInjectedByJsPlugin(), ...plugins],
     build: {
       lib: {
         formats: ["es", "umd"],
@@ -35,13 +41,21 @@ const getSharedConfiguration = ({ plugins, ...library }) => {
         },
       },
     },
-  };
+  }));
+};
+
+const viteBuild = (configFactory) => {
+  const config = configFactory();
+
+  return build(config);
 };
 
 const buildLibraries = async () => {
-  [reactComponentLibrary, webcomponentsLibrary]
-    .map(getSharedConfiguration)
-    .map(build);
+  await Promise.all(
+    [webcomponentsLibrary, reactComponentLibrary]
+      .map(getSharedConfiguration)
+      .map(viteBuild)
+  );
 };
 
 buildLibraries();
